@@ -33,6 +33,12 @@ export const accountOperations: INodeProperties[] = [
 				description: 'Create an account',
 				action: 'Create an account',
 			},
+			{
+				name: 'Get Store of Account',
+				value: 'getAccountStores',
+				description: 'Get all store of account for admin only',
+				action: 'Get all store of account for admin only',
+			},
 		],
 		default: 'getAccountInfo',
 	},
@@ -120,6 +126,22 @@ export const accountFields: INodeProperties[] = [
 /*                                STORE                                       */
 /* -------------------------------------------------------------------------- */
 export const storesOperations: INodeProperties[] = [
+	{
+		displayName: 'Limit',
+		name: 'limit',
+		type: 'number',
+		typeOptions: {
+			minValue: 1,
+	},
+		default: 50,
+		displayOptions: {
+			show: {
+				resource: ['account'],
+				operation: ['getAccountStores'],
+			},
+		},
+		description: 'Max number of results to return',
+	},
 	{
 		displayName: 'Operation',
 		name: 'operation',
@@ -456,6 +478,12 @@ export const productsOperations: INodeProperties[] = [
 				action: 'Get a count',
 			},
 			{
+				name: 'Get a Count of Product',
+				value: 'getProductCount',
+				description: 'Get a Count of Products',
+				action: 'Get product count',
+			},
+			{
 				name: 'Get a Count of Sides by Product',
 				value: 'getASideCount',
 				description: 'Get a Count of Sides',
@@ -484,6 +512,35 @@ export const productsOperations: INodeProperties[] = [
 	},
 ];
 export const productFields: INodeProperties[] = [
+	/* -------------------------------------------------------------------------- */
+	/*                          entry:product count                                */
+	/* -------------------------------------------------------------------------- */
+	{
+		displayName: 'Sid',
+		name: 'sid',
+		type: 'string',
+		default: '',
+		displayOptions: {
+			show: {
+				resource: ['product'],
+				operation: ['getProductCount'],
+			},
+		},
+		description: 'Sid of the product',
+	},
+	{
+		displayName: 'Secret',
+		name: 'secret',
+		type: 'string',
+		default: '',
+		displayOptions: {
+			show: {
+				resource: ['product'],
+				operation: ['getProductCount'],
+			},
+		},
+		description: 'Secret of the product',
+	},
 	/* -------------------------------------------------------------------------- */
 	/*                                entry:Get list of products                  */
 	/* -------------------------------------------------------------------------- */
@@ -1827,7 +1884,7 @@ export const designFields: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				resource: ['design'],
-				operation: ['createDesign', 'updateDesign','getDesignList'],
+				operation: ['createDesign', 'updateDesign', 'getDesignList'],
 			},
 		},
 		description: 'Status of design',
@@ -2067,7 +2124,7 @@ export const projectFields: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				resource: ['project'],
-				operation: ['createProject','updateProject','getProjectList'],
+				operation: ['createProject', 'updateProject', 'getProjectList'],
 			},
 		},
 		description: 'Status of project',
@@ -2570,7 +2627,7 @@ export const fontsFields: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				resource: ['font'],
-				operation: ['getFontList','getDefaultFontList'],
+				operation: ['getFontList', 'getDefaultFontList'],
 			},
 		},
 	},
@@ -2601,7 +2658,7 @@ export const fontsFields: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				resource: ['font'],
-				operation: ['getFontList','getDefaultFontList'],
+				operation: ['getFontList', 'getDefaultFontList'],
 			},
 		},
 	},
@@ -2613,7 +2670,7 @@ export const fontsFields: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				resource: ['font'],
-				operation: ['getFontList','getDefaultFontList'],
+				operation: ['getFontList', 'getDefaultFontList'],
 			},
 		},
 		description: 'Sort by a element of product',

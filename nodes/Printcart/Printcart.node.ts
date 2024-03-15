@@ -222,6 +222,23 @@ export class Printcart implements INodeType {
 						);
 						returnData.push(responseData);
 					}
+					if (operation === 'getAccountStores') {
+						const limit = this.getNodeParameter('limit', i) as unknown as string;
+						const options: OptionsWithUri = {
+							headers: {
+								Accept: 'application/json',
+							},
+							method: 'GET',
+							uri: `https://api.printcart.com/v1/stores?integration=shopify&limit=${limit}`,
+							json: true,
+						};
+						responseData = await this.helpers.requestWithAuthentication.call(
+							this,
+							'printcartTokenApi',
+							options,
+						);
+						returnData.push(responseData);
+					}
 					if (operation === 'updateAccount') {
 						const name = this.getNodeParameter('updateName', i) as string;
 						const email = this.getNodeParameter('updateEmail', i) as string;
@@ -287,7 +304,6 @@ export class Printcart implements INodeType {
 						returnData.push(responseData);
 					}
 					if (operation === 'getStoreDetail') {
-						console.log(sid, secret);
 						const options: OptionsWithUri = {
 							headers: {
 								Accept: 'application/json',
@@ -637,6 +653,20 @@ export class Printcart implements INodeType {
 							},
 							method: 'GET',
 							uri: `https://${sid}:${secret}@api.printcart.com/v1/products/${productId}/sides/count`,
+							json: true,
+						};
+						responseData = await this.helpers.request.call(this, options);
+						returnData.push(responseData);
+					}
+					if (operation === 'getProductCount') {
+						const sid1 = this.getNodeParameter('sid' ,i);
+						const secret1 = this.getNodeParameter('secret' ,i);
+						const options: OptionsWithUri = {
+							headers: {
+								Accept: 'application/json',
+							},
+							method: 'GET',
+							uri: `https://${sid1}:${secret1}@api.printcart.com/v1/products/count`,
 							json: true,
 						};
 						responseData = await this.helpers.request.call(this, options);

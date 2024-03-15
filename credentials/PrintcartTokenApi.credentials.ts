@@ -10,7 +10,7 @@ export class PrintcartTokenApi implements ICredentialType {
 
 	displayName = 'Printcart Token API';
 
-	documentationUrl = 'https://example.com/docs/auth';
+	documentationUrl = 'https://docs.printcart.com/';
 
 	properties: INodeProperties[] = [
 		{

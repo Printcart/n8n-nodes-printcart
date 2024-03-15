@@ -1,6 +1,6 @@
 {
-  "name": "n8n-nodes-printcart",
-  "version": "0.1.0",
+  "name": "@printcart/n8n-nodes-printcart",
+  "version": "0.2.5",
   "description": "this is printcart node",
   "keywords": [
     "n8n-community-node-package"
@@ -9,7 +9,7 @@
   "homepage": "Printcart.com",
   "author": {
     "name": "Printcart.com",
-    "email": "hieuwoek.com@gmail.com"
+    "email": "hieuwork.com@gmail.com"
   },
   "repository": {
     "type": "git",
@@ -30,12 +30,10 @@
   "n8n": {
     "n8nNodesApiVersion": 1,
     "credentials": [
-      "dist/credentials/ExampleCredentialsApi.credentials.js",
-      "dist/credentials/HttpBinApi.credentials.js"
+      "dist/credentials/PrintcartTokenApi.credentials.js"
     ],
     "nodes": [
-      "dist/nodes/ExampleNode/ExampleNode.node.js",
-      "dist/nodes/HttpBin/HttpBin.node.js"
+      "dist/nodes/Printcart/Printcart.node.js"
     ]
   },
   "devDependencies": {
