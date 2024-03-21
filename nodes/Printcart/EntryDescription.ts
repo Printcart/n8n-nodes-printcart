@@ -132,7 +132,7 @@ export const storesOperations: INodeProperties[] = [
 		type: 'number',
 		typeOptions: {
 			minValue: 1,
-	},
+		},
 		default: 50,
 		displayOptions: {
 			show: {
@@ -490,6 +490,12 @@ export const productsOperations: INodeProperties[] = [
 				action: 'Get side count',
 			},
 			{
+				name: 'Get List of Import Products',
+				value: 'getListOfImportProduct',
+				description: 'Get import products of account',
+				action: 'Get list of import products ',
+			},
+			{
 				name: 'Get List of Products',
 				value: 'getListOfProduct',
 				description: 'Get products of account',
@@ -512,8 +518,9 @@ export const productsOperations: INodeProperties[] = [
 	},
 ];
 export const productFields: INodeProperties[] = [
+
 	/* -------------------------------------------------------------------------- */
-	/*                          entry:product count                                */
+	/*                entry:product count, import product                         */
 	/* -------------------------------------------------------------------------- */
 	{
 		displayName: 'Sid',
@@ -523,7 +530,7 @@ export const productFields: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				resource: ['product'],
-				operation: ['getProductCount'],
+				operation: ['getProductCount', 'getListOfImportProduct'],
 			},
 		},
 		description: 'Sid of the product',
@@ -536,7 +543,7 @@ export const productFields: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				resource: ['product'],
-				operation: ['getProductCount'],
+				operation: ['getProductCount', 'getListOfImportProduct'],
 			},
 		},
 		description: 'Secret of the product',
@@ -2065,7 +2072,6 @@ export const projectFields: INodeProperties[] = [
 		name: 'note',
 		type: 'string',
 		default: '',
-		required: true,
 		displayOptions: {
 			show: {
 				resource: ['project'],

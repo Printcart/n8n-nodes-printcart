@@ -1,6 +1,6 @@
 {
   "name": "@printcart/n8n-nodes-printcart",
-  "version": "0.2.5",
+  "version": "0.2.6",
   "description": "this is printcart node",
   "keywords": [
     "n8n-community-node-package"

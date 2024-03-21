@@ -454,6 +454,20 @@ export class Printcart implements INodeType {
 						responseData = await this.helpers.request.call(this, options);
 						returnData.push(responseData);
 					}
+					if (operation === 'getListOfImportProduct') {
+						const sid1 = this.getNodeParameter('sid', i) as string;
+						const secret1 = this.getNodeParameter('secret', i) as string;
+						const options: OptionsWithUri = {
+							headers: {
+								Accept: 'application/json',
+							},
+							method: 'GET',
+							uri: `https://${sid1}:${secret1}@api.printcart.com/v1/integration/source-products`,
+							json: true,
+						};
+						responseData = await this.helpers.request.call(this, options);
+						returnData.push(responseData);
+					}
 					if (operation === 'createProduct') {
 						const productName = this.getNodeParameter('productName', i) as string;
 						const dynamic_side = this.getNodeParameter('dynamic_side', i) as string;
